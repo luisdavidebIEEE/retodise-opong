@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "author": "LUIS DAVID ESPINEL BALLEN",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-mini", "id": "bb1", "top": 209.8, "left": 122.4, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -57.6, "left": 129.64, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -83.26,
+      "left": -182.17,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": 85.8,
+      "left": -167.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick2",
+      "top": 85.8,
+      "left": -23.4,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -84,
+      "left": -17.4,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v-38.4", "h345.67", "v105.6" ] ],
+    [ "oled1:SCL", "esp:22", "yellow", [ "v-19.2", "h345.9", "v28.8" ] ],
+    [ "esp:5V", "bb1:1t.a", "red", [ "h0" ] ],
+    [ "esp:GND.2", "bb1:17t.a", "black", [ "v0", "h76.8" ] ],
+    [ "joystick1:VCC", "bb1:1t.e", "red", [ "v0" ] ],
+    [ "joystick2:VCC", "bb1:1t.d", "red", [ "v0" ] ],
+    [ "oled1:VCC", "bb1:1t.c", "red", [ "v-28.8", "h-57.45", "v278.4" ] ],
+    [ "oled1:GND", "bb1:17t.b", "black", [ "v-48", "h441.6", "v297.6" ] ],
+    [ "joystick2:GND", "bb1:17t.c", "black", [ "v-9.6", "h278.4", "v38.4" ] ],
+    [ "joystick1:GND", "bb1:17t.d", "black", [ "v153.6", "h403.2", "v-115.2" ] ],
+    [ "joystick1:VERT", "esp:32", "cyan", [ "v9.6", "h67.2", "v-182.4" ] ],
+    [ "joystick2:VERT", "esp:33", "cyan", [ "v9.6", "h86.4", "v-172.8" ] ],
+    [ "joystick1:SEL", "esp:26", "magenta", [ "v19.2", "h76.8", "v-153.6" ] ],
+    [ "joystick2:SEL", "esp:27", "magenta", [ "v19.2", "h76.8", "v-153.6" ] ],
+    [ "bz1:1", "bb1:17t.e", "green", [ "v0", "h105.6", "v-67.2", "h201.6", "v326.4" ] ],
+    [ "bz1:2", "esp:25", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
